@@ -28,9 +28,8 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-	<bean id="customer" class="bean.impl.Customer">
-		<property name="name">
-			<value>customer!</value>
-		</property>
-	</bean>
+	<!-- 启动全局扫描 -->
+	<context:component-scan base-package="bean" />
+	<!-- 可以配置多个 -->
+	<context:component-scan base-package="config" />
 </beans>

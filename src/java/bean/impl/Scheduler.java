@@ -1,7 +1,18 @@
 package bean.impl;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
 import bean.IBean;
 
+/**
+ * 注释注入
+ * 并指定作用域为原型
+ * @author Administrator
+ *
+ */
+@Service
+@Scope("prototype")
 public class Scheduler implements IBean {
 	private String name;
 

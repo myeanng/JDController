@@ -30,23 +30,6 @@
         http://www.springframework.org/schema/task/spring-task.xsd">
 
 	<!-- 引入外部配置文件 -->
-	<import resource="spring-customer.xml" />
-	<import resource="spring-scheduler.xml" />
-	<bean id="helloSpring" class="hello.HelloSpring">
-		<property name="name">
-			<value>word!</value>
-		</property>
-		<!-- 构造注入 -->
-		<constructor-arg>
-			<!-- 注入类 
-			<bean class="bean.impl.Customer"/>
-			-->
-			<!-- 引用配置的bean -->
-			<ref bean="customer"/>
-		</constructor-arg>
-		<!-- set注入 -->
-		<property name="scheduler">
-			<ref bean="scheduler"/>
-		</property>
-	</bean>
+	<import resource="spring-bean.xml" />
+	<import resource="spring-context.xml" />
 </beans>
