@@ -1,6 +1,6 @@
-package hello;
+package bean;
 
-public class HelloSpring {
+public class Scheduler {
 	private String name;
 
 	public void setName(String name) {
@@ -11,7 +11,7 @@ public class HelloSpring {
 		System.out.println("Spring 4 : Hello ! " + name);
 	}
 
-	public HelloSpring(String name) {
+	public Scheduler(String name) {
 		super();
 		this.name = name;
 	}
@@ -19,7 +19,7 @@ public class HelloSpring {
 	/**
 	 * 已xml文件形式配置Spring时，无默认构造方法时，会报注入错误
 	 */
-	public HelloSpring() {
+	public Scheduler() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

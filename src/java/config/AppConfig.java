@@ -2,6 +2,7 @@ package config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import hello.HelloSpring;
 
@@ -12,6 +13,7 @@ import hello.HelloSpring;
  *
  */
 @Configuration
+@Import({ CustomerConfig.class, SchedulerConfig.class })
 public class AppConfig {
 	/**
 	 * 注入HelloSpring java类

@@ -28,13 +28,9 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-
-	<!-- 引入外部配置文件 -->
-	<import resource="spring-customer.xml" />
-	<import resource="spring-scheduler.xml" />
-	<bean id="helloSpring" class="hello.HelloSpring">
+	<bean id="scheduler" class="bean.Scheduler">
 		<property name="name">
-			<value>word!</value>
+			<value>scheduler!</value>
 		</property>
 	</bean>
 </beans>
