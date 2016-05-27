@@ -28,7 +28,7 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-	<bean id="scheduler" class="bean.Scheduler">
+	<bean id="scheduler" class="bean.impl.Scheduler">
 		<property name="name">
 			<value>scheduler!</value>
 		</property>

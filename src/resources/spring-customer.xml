@@ -28,7 +28,7 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-	<bean id="customer" class="bean.Customer">
+	<bean id="customer" class="bean.impl.Customer">
 		<property name="name">
 			<value>customer!</value>
 		</property>

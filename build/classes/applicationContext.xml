@@ -36,5 +36,17 @@
 		<property name="name">
 			<value>word!</value>
 		</property>
+		<!-- 构造注入 -->
+		<constructor-arg>
+			<!-- 注入类 
+			<bean class="bean.impl.Customer"/>
+			-->
+			<!-- 引用配置的bean -->
+			<ref bean="customer"/>
+		</constructor-arg>
+		<!-- set注入 -->
+		<property name="scheduler">
+			<ref bean="scheduler"/>
+		</property>
 	</bean>
 </beans>

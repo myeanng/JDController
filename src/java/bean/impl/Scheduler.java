@@ -1,12 +1,15 @@
-package bean;
+package bean.impl;
 
-public class Scheduler {
+import bean.IBean;
+
+public class Scheduler implements IBean {
 	private String name;
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public void printHello() {
 		System.out.println("Spring 4 : Hello ! " + name);
 	}

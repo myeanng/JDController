@@ -3,7 +3,7 @@ package config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import bean.Scheduler;
+import bean.impl.Scheduler;
 
 @Configuration
 public class SchedulerConfig {

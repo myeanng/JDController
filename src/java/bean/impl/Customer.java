@@ -1,12 +1,15 @@
-package bean;
+package bean.impl;
 
-public class Customer {
+import bean.IBean;
+
+public class Customer implements IBean {
 	private String name;
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public void printHello() {
 		System.out.println("Spring 4 : Hello ! " + name);
 	}

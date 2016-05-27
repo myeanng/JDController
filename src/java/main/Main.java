@@ -4,8 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import bean.Customer;
-import bean.Scheduler;
+import bean.impl.Customer;
+import bean.impl.Scheduler;
 import config.AppConfig;
 import hello.HelloSpring;
 
@@ -28,6 +28,9 @@ public class Main {
 		obj.printHello();
 		cust.printHello();
 		sche.printHello();
+		
+		obj.getCustomer().printHello();
+		obj.getScheduler().printHello();
 	}
 
 }
