@@ -13,7 +13,7 @@ public class Mysql implements IMysql{
 	private JdbcTemplate jdbcTemplate; 
 	@Override
 	public void find() {
-		String sql = "select * from user";
+		String sql = "select * from test_table_1";
         System.out.println(jdbcTemplate.queryForList(sql).toString());
 	}
 
