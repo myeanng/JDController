@@ -33,4 +33,6 @@
 	<!-- 可以配置多个 -->
 	<context:component-scan base-package="config" />
 	<context:component-scan base-package="dao" />
+	<!-- 启动注解检查 -->
+	<context:annotation-config />
 </beans>
