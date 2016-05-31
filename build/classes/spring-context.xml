@@ -35,4 +35,16 @@
 	<context:component-scan base-package="dao" />
 	<!-- 启动注解检查 -->
 	<context:annotation-config />
+	<!-- 读取配置文件类 -->
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="location"> <value>jdbc.test.properties</value> </property> 
+		</bean> -->
+	<bean id="configProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath*:*.test.properties</value>
+			</list>
+		</property>
+	</bean>
 </beans>
