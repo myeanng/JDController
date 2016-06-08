@@ -33,6 +33,15 @@
 	<!-- 可以配置多个 -->
 	<context:component-scan base-package="config" />
 	<context:component-scan base-package="dao" />
+	<!--使用Spring “过滤” 扫描并注册匹配定义“regex”，即使该类组件的名称未标注 @Component 。 -->
+	<context:component-scan base-package="service">
+		<!-- 在这个包下，所有文件的名称中包含Service(*Services.*) 单词将被检测并在 Spring 容器中注册。 -->
+		<context:include-filter type="regex"
+			expression="services.*Service.*" />
+		<!-- 排除指定组件，以避免 Spring 检测和 Spring 容器注册。不包括在这些文件中标注有 @Service 。 -->
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
 	<!-- 启动注解检查 -->
 	<context:annotation-config />
 	<!-- 读取配置文件类 -->
