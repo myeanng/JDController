@@ -3,17 +3,17 @@ package bean.impl;
 import javax.annotation.PostConstruct;
 
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import bean.IBean;
 
 /**
- * 注释注入 并指定作用域为原型
+ * 注释注入 并指定作用域为原型。 bean普通组件Test类@Component – 指示自动扫描组件。
  * 
  * @author Administrator
  *
  */
-@Service
+@Component
 @Scope("prototype")
 public class Scheduler implements IBean {
 	private String name;
