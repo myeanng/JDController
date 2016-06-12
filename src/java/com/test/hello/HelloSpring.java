@@ -1,6 +1,6 @@
-package hello;
+package com.test.hello;
 
-import bean.IBean;
+import com.test.bean.IBean;
 
 public class HelloSpring {
 	private IBean customer;

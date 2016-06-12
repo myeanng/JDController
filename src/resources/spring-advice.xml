@@ -28,34 +28,41 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-	<context:annotation-config />
-	<!-- 启动全局扫描 -->
-	<context:component-scan base-package="com.test.bean" />
-	<!-- 可以配置多个 -->
-	<context:component-scan base-package="com.test.config" />
-	<context:component-scan base-package="com.test.dao" />
-	<!--使用Spring “过滤” 扫描并注册匹配定义“regex”，即使该类组件的名称未标注 @Component 。 -->
-	<context:component-scan base-package="com.test.service">
-		<!-- 在这个包下，所有文件的名称中包含Service(*Services.*) 单词将被检测并在 Spring 容器中注册。 -->
-		<!-- <context:include-filter type="regex" expression="com.test.services.*Service.*" 
-			/> -->
-		<!-- 排除指定组件，以避免 Spring 检测和 Spring 容器注册。不包括在这些文件中标注有 @Service 。 -->
-		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" 
-			/> -->
-	</context:component-scan>
-	<context:component-scan base-package="com.test.global.aspect" />
-	<context:component-scan base-package="com.test.global.advice" />
-	<!-- 启动注解检查 -->
-	<context:annotation-config />
-	<!-- 读取配置文件类 -->
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="location"> <value>jdbc.test.properties</value> </property> 
-		</bean> -->
-	<bean id="configProperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="locations">
+	<bean id="mysqlService" class="com.test.service.impl.MysqlService" />
+	<!-- 声明通知 -->
+	<bean id="beforeAdvice" class="com.test.global.advice.BeforeAdvicePrint" />
+	<bean id="afterAdvice" class="com.test.global.advice.AfterAdvicePrint" />
+	<bean id="methodAdvice" class="com.test.global.advice.MethodAdvicePrint" />
+	<bean id="throwsAdvice" class="com.test.global.advice.ThrowsAdvicePrint" />
+	<!-- <bean id="advisor" class="org.springframework.aop.support.NameMatchMethodTutorialscutAdvisor"> 
+		<property name="mappedName" value="find" /> <property name="advice" ref="adviceBefore" 
+		/> </bean> -->
+	<!-- 使用Spring代理工厂配置一个代理 -->
+	<bean id="mysqlServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 指定代理接口，如果是多个接口，可以使用List元素指定 -->
+		<property name="proxyInterfaces" value="com.test.service.IMysqlService" />
+		<!-- 指定通知 -->
+		<property name="interceptorNames">
 			<list>
-				<value>classpath*:*.test.properties</value>
+				<value>beforeAdvice</value>
+				<value>afterAdvice</value> <!-- <value>throwsAdvice</value> <value>methodAdvice</value> -->
+			</list>
+		</property>
+		<!-- 指定目标对象 -->    <!-- 这个地方的name 我开始按照书上写的target报错，我进ProxyFactoryBean类看 没有target属性和set它的方法，有targetName属性修改了就对了 -->
+		<property name="targetName" value="mysqlService" />
+	</bean>
+	<!-- 自动代理机制，只需要创建一个的BeanNameAutoProxyCreator，并包含所有你的bean(通过bean的名字，或正则表达式名)和“advisor” 
+		作为一个单位。 -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>beforeAdvice</value>
 			</list>
 		</property>
 	</bean>

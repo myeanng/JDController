@@ -1,11 +1,11 @@
-package bean.impl;
+package com.test.bean.impl;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import bean.IBean;
+import com.test.bean.IBean;
 
 /**
  * 注释注入 并指定作用域为原型。 bean普通组件Test类@Component – 指示自动扫描组件。

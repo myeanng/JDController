@@ -1,13 +1,13 @@
-package main;
+package com.test.main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import bean.impl.Customer;
-import bean.impl.Scheduler;
-import config.AppConfig;
-import hello.HelloSpring;
+import com.test.bean.impl.Customer;
+import com.test.bean.impl.Scheduler;
+import com.test.config.AppConfig;
+import com.test.hello.HelloSpring;
 
 public class Main {
 

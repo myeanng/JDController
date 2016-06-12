@@ -1,9 +1,11 @@
-package controller;
+package com.test.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import service.IMysqlService;
+import com.test.service.IMysqlService;
 
 /**
  * 表示控制层Test类，并使用注解@Controller – 表示在表示层控制器组件。
@@ -12,6 +14,7 @@ import service.IMysqlService;
  *
  */
 @Controller
+@RequestMapping(value = "mysql")
 public class MySQLController {
 
 	/**
@@ -20,6 +23,7 @@ public class MySQLController {
 	@Autowired
 	private IMysqlService mysqlService;
 
+	@RequestMapping(value = "find", method = RequestMethod.GET)
 	public void find() {
 		mysqlService.find();
 	}

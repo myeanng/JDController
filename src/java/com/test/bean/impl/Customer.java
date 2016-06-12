@@ -1,6 +1,6 @@
-package bean.impl;
+package com.test.bean.impl;
 
-import bean.IBean;
+import com.test.bean.IBean;
 
 public class Customer implements IBean {
 	private String name;

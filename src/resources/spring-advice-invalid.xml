@@ -28,35 +28,30 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-	<context:annotation-config />
-	<!-- 启动全局扫描 -->
-	<context:component-scan base-package="com.test.bean" />
-	<!-- 可以配置多个 -->
-	<context:component-scan base-package="com.test.config" />
-	<context:component-scan base-package="com.test.dao" />
-	<!--使用Spring “过滤” 扫描并注册匹配定义“regex”，即使该类组件的名称未标注 @Component 。 -->
-	<context:component-scan base-package="com.test.service">
-		<!-- 在这个包下，所有文件的名称中包含Service(*Services.*) 单词将被检测并在 Spring 容器中注册。 -->
-		<!-- <context:include-filter type="regex" expression="com.test.services.*Service.*" 
-			/> -->
-		<!-- 排除指定组件，以避免 Spring 检测和 Spring 容器注册。不包括在这些文件中标注有 @Service 。 -->
-		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" 
-			/> -->
-	</context:component-scan>
-	<context:component-scan base-package="com.test.global.aspect" />
-	<context:component-scan base-package="com.test.global.advice" />
-	<!-- 启动注解检查 -->
-	<context:annotation-config />
-	<!-- 读取配置文件类 -->
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="location"> <value>jdbc.test.properties</value> </property> 
-		</bean> -->
-	<bean id="configProperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="locations">
+	<bean id="mysqlService" class="com.test.service.impl.MysqlService" />
+	<!-- 声明通知 -->
+	<bean id="adviceBefore" class="com.test.global.advice.BeforeAdvicePrint" />
+	<!-- 代理对象‘target’ – 定义你想拦截的bean。‘interceptorNames’ – 定义要应用这个代理/目标对象的类(通知)。 -->
+	<!-- -->
+	<bean id="mysqlServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="mysqlService" />
+		<property name="interceptorNames">
 			<list>
-				<value>classpath*:*.test.properties</value>
+				<!-- 引用通知 -->
+				<!-- <value>adviceBefore</value> -->
+				<value>advisor</value>
 			</list>
 		</property>
+	</bean>
+	<!-- 声明切入点 --><!-- 声明拦截的方法 -->
+	<bean id="customerYiibaicut"
+		class="org.springframework.aop.support.NameMatchMethodYiibaicut">
+
+		<property name="mappedName" value="find" />
+	</bean>
+	<!-- 创建 advisor 通知 bean，通知和切入点相关联。 -->
+	<bean id="advisor" class="org.springframework.aop.support.DefaultYiibaicutAdvisor">
+		<property name="pointcut" ref="customerYiibaicut" />
+		<property name="advice" ref="adviceBefore" />
 	</bean>
 </beans>

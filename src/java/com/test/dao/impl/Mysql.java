@@ -1,10 +1,10 @@
-package dao.impl;
+package com.test.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import dao.IMysql;
+import com.test.dao.IMysql;
 
 /**
  * 持久层Test类，并使用注解@Repository – 表示在持久层DAO组件。

@@ -28,35 +28,23 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-	<context:annotation-config />
-	<!-- 启动全局扫描 -->
-	<context:component-scan base-package="com.test.bean" />
-	<!-- 可以配置多个 -->
-	<context:component-scan base-package="com.test.config" />
-	<context:component-scan base-package="com.test.dao" />
-	<!--使用Spring “过滤” 扫描并注册匹配定义“regex”，即使该类组件的名称未标注 @Component 。 -->
-	<context:component-scan base-package="com.test.service">
-		<!-- 在这个包下，所有文件的名称中包含Service(*Services.*) 单词将被检测并在 Spring 容器中注册。 -->
-		<!-- <context:include-filter type="regex" expression="com.test.services.*Service.*" 
-			/> -->
-		<!-- 排除指定组件，以避免 Spring 检测和 Spring 容器注册。不包括在这些文件中标注有 @Service 。 -->
-		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" 
-			/> -->
-	</context:component-scan>
-	<context:component-scan base-package="com.test.global.aspect" />
-	<context:component-scan base-package="com.test.global.advice" />
-	<!-- 启动注解检查 -->
-	<context:annotation-config />
-	<!-- 读取配置文件类 -->
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="location"> <value>jdbc.test.properties</value> </property> 
-		</bean> -->
-	<bean id="configProperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="locations">
-			<list>
-				<value>classpath*:*.test.properties</value>
-			</list>
-		</property>
-	</bean>
+	<!-- 启用AspectJ -->
+	<aop:aspectj-autoproxy />
+	<!-- 对于那些不喜欢注释，使用JDK1.4，则可以基于XML，而不使用 AspectJ。 -->
+	<aop:config>
+		<aop:aspect id="aspect2" ref="globalLogPrint2">
+			<!-- @AfterReturning -->
+			<aop:pointcut id="globalLogPrint2AfterReturning"
+				expression="execution(* com.test.dao..*.*(..))|| execution(* com.test.service..*.*(..))
+			 || execution(* com.test.controller..*.*(..))" />
+			<aop:after-returning method="logAfter" returning="returnValue"
+				pointcut-ref="globalLogPrint2AfterReturning" />
+			<!-- @AfterThrowing -->
+			<aop:pointcut id="globalLogPrint2AfterThrowing"
+				expression="execution(* com.test.dao..*.*(..))|| execution(* com.test.service..*.*(..))
+			 || execution(* com.test.controller..*.*(..))" />
+			<aop:after-throwing method="afterThrowing"
+				throwing="e" pointcut-ref="globalLogPrint2AfterThrowing" />
+		</aop:aspect>
+	</aop:config>
 </beans>

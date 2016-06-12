@@ -1,9 +1,9 @@
-package config;
+package com.test.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import bean.impl.Scheduler;
+import com.test.bean.impl.Scheduler;
 
 @Configuration
 public class SchedulerConfig {

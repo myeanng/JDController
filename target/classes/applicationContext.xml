@@ -30,7 +30,14 @@
         http://www.springframework.org/schema/task/spring-task.xsd">
 
 	<!-- 引入外部配置文件 -->
+	<!-- 注册bean的配置文件 -->
 	<import resource="spring-bean.xml" />
+	<!-- 全局的配置文件（自动扫描、注解检查、读取配置文件） -->
 	<import resource="spring-context.xml" />
+	<!-- 持久层配置文件 -->
 	<import resource="spring-jdbc.xml" />
+	<!-- 切面通知配置文件 -->
+	<!-- <import resource="spring-advice.xml" /> -->
+	<!-- AspectJ配置文件 -->
+	<import resource="spring-aspect.xml" />
 </beans>

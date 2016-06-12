@@ -1,10 +1,10 @@
-package config;
+package com.test.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import hello.HelloSpring;
+import com.test.hello.HelloSpring;
 
 /**
  * javaConfig类； 代替applicationContext.xml配置文件
