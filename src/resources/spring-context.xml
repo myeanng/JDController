@@ -55,7 +55,7 @@
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="locations">
 			<list>
-				<value>classpath*:*.test.properties</value>
+				<value>classpath*:properties/*.test.properties</value>
 			</list>
 		</property>
 	</bean>
