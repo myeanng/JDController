@@ -28,18 +28,11 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/task 
         http://www.springframework.org/schema/task/spring-task.xsd">
-
-	<!-- 引入外部配置文件 -->
-	<!-- 注册bean的配置文件 -->
-	<import resource="spring-bean.xml" />
-	<!-- 全局的配置文件（自动扫描、注解检查、读取配置文件） -->
-	<import resource="spring-context.xml" />
-	<!-- 持久层配置文件 -->
-	<import resource="spring-jdbc.xml" />
-	<!-- 切面通知配置文件 -->
-	<!-- <import resource="spring-advice.xml" /> -->
-	<!-- AspectJ配置文件 -->
-	<import resource="spring-aspect.xml" />
-	<!-- OXM配置文件（object、XML转换） -->
-	<import resource="spring-oxm.xml" />
+	<bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+		<property name="mappingLocation" value="classpath:mapping/mapping.xml" />
+	</bean>
+	<bean id="xMLConverter" class="com.test.helper.XMLConverter">
+		<property name="marshaller" ref="castorMarshaller" />
+		<property name="unmarshaller" ref="castorMarshaller" />
+	</bean>
 </beans>

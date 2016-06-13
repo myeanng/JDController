@@ -40,4 +40,6 @@
 	<!-- <import resource="spring-advice.xml" /> -->
 	<!-- AspectJ配置文件 -->
 	<import resource="spring-aspect.xml" />
+	<!-- OXM配置文件（object、XML转换） -->
+	<import resource="spring-oxm.xml" />
 </beans>

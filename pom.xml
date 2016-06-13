@@ -79,6 +79,32 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.codehaus.castor/castor -->
+		<dependency>
+			<groupId>org.codehaus.castor</groupId>
+			<artifactId>castor</artifactId>
+			<version>1.4.1</version>
+			<type>pom</type>
+		</dependency>
+		<!-- Castor need this -->
+		<!-- http://mvnrepository.com/artifact/xerces/xercesImpl -->
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<!-- 少了这个包会报：Caused by: java.lang.ClassNotFoundException: org.exolab.castor.mapping.MappingException -->
+		<dependency>
+			<groupId>org.codehaus.castor</groupId>
+			<artifactId>castor-xml</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+		<!-- object xml mapping -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
