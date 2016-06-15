@@ -55,6 +55,4 @@
 			<ref bean="dataSource" />
 		</property>
 	</bean>
-	<!-- <bean id="mysql" class="dao.impl.Mysql"> <property name="jdbcTemplate"> 
-		<ref bean="jdbcTemplate"/> </property> </bean> -->
 </beans>

@@ -32,19 +32,19 @@
 	<aop:aspectj-autoproxy />
 	<!-- 对于那些不喜欢注释，使用JDK1.4，则可以基于XML，而不使用 AspectJ。 -->
 	<aop:config>
-		<aop:aspect id="aspect2" ref="globalLogPrint2">
+		<aop:aspect id="aspectByXML" ref="globalLogPrintByXML">
 			<!-- @AfterReturning -->
-			<aop:pointcut id="globalLogPrint2AfterReturning"
+			<aop:pointcut id="globalLogPrintByXMLAfterReturning"
 				expression="execution(* com.test.dao..*.*(..))|| execution(* com.test.service..*.*(..))
 			 || execution(* com.test.controller..*.*(..))" />
 			<aop:after-returning method="logAfter" returning="returnValue"
-				pointcut-ref="globalLogPrint2AfterReturning" />
+				pointcut-ref="globalLogPrintByXMLAfterReturning" />
 			<!-- @AfterThrowing -->
-			<aop:pointcut id="globalLogPrint2AfterThrowing"
+			<aop:pointcut id="globalLogPrintByXMLAfterThrowing"
 				expression="execution(* com.test.dao..*.*(..))|| execution(* com.test.service..*.*(..))
 			 || execution(* com.test.controller..*.*(..))" />
 			<aop:after-throwing method="afterThrowing"
-				throwing="e" pointcut-ref="globalLogPrint2AfterThrowing" />
+				throwing="e" pointcut-ref="globalLogPrintByXMLAfterThrowing" />
 		</aop:aspect>
 	</aop:config>
 </beans>

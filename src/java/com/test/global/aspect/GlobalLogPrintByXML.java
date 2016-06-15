@@ -10,14 +10,14 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Component
-public class GlobalLogPrint2 {
+public class GlobalLogPrintByXML {
 
 	public void globalLog() {
 
 	}
 
 	public void logAfter(JoinPoint joinPoint, Object returnValue) {
-		System.out.println("logAfter2() is running!");
+		System.out.println("logAfterByXML() is running!");
 		try {
 			System.out.println("请求时间:" + new Date());
 			System.out.println("请求方法:" + (joinPoint.getSignature().getDeclaringTypeName() + "."

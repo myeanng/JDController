@@ -24,8 +24,8 @@ import net.sf.json.JSONObject;
  * @author Administrator
  *
  */
-@Aspect
-@Component
+// @Aspect
+// @Component
 public class GlobalLogPrint {
 
 	@Pointcut("execution(* com.test.dao..*.*(..))" + " || execution(* com.test.service..*.*(..))"
